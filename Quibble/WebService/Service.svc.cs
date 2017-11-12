@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -27,5 +28,13 @@ namespace WebService
         }
 
         // Add more operations here and mark them with [OperationContract]
+
+        
+        [WebGet(UriTemplate = "/Quibbles")]
+        public Quibble[] GetAll()
+        {
+            var service = new QuibbleDataService();
+            return service.GetAll();
+        }
     }
 }
