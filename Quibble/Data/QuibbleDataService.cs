@@ -70,7 +70,7 @@ namespace Data
             return quibble;
         }
 
-        public void Update(Quibble quibble)
+        public Quibble Update(Quibble quibble)
         {
             var found = this.Quibbles.SingleOrDefault(q => q.Id == quibble.Id);
             if (found != null)
@@ -79,6 +79,7 @@ namespace Data
                 this.Quibbles.Add(quibble);
                 Save();
             }
+            return quibble;
         }
 
         public void Delete(int id)

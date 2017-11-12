@@ -36,14 +36,15 @@ namespace WebService
             _service = new QuibbleDataService();
         }
 
-        [WebGet(UriTemplate = "/Quibbles")]
+        // [WebGet(UriTemplate = "/Quibbles")]
+        [WebGet(UriTemplate = "/Quibbles", ResponseFormat = WebMessageFormat.Json)]
         public Quibble[] GetAll()
         {
             return _service.GetAll();
         }
 
         //[WebGet(UriTemplate = "/Quibble?id={id}")]
-        [WebGet(UriTemplate = "/Quibble/{id}")]
+        [WebGet(UriTemplate = "/Quibble/{Id}")]
         public Quibble GetById(string Id)
         {
             int parsedId;
@@ -55,6 +56,13 @@ namespace WebService
         public Quibble Create(Quibble quibble)
         {
             return _service.Add(quibble);
+        }
+
+        [WebInvoke(Method = "PUT", UriTemplate = "/Quibble/{Id}")]
+        // [WebInvoke(Method = "PATCH", UriTemplate = "/Quibble/{Id}")]
+        public Quibble Update(string Id, Quibble quibble)
+        {
+            return _service.Update(quibble);
         }
     }
 }
