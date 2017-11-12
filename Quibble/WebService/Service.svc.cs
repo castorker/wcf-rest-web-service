@@ -19,6 +19,7 @@ namespace WebService
         //     and include the following line in the operation body:
         //         WebOperationContext.Current.OutgoingResponse.ContentType = "text/xml";
         [OperationContract]
+        [WebGet(UriTemplate = "/DoSomething")]
         public void DoWork()
         {
             // Add your operation implementation here
