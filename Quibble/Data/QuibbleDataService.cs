@@ -61,12 +61,13 @@ namespace Data
             return this.Quibbles.SingleOrDefault(q => q.Id == id);
         }
 
-        public void Add(Quibble quibble)
+        public Quibble Add(Quibble quibble)
         {
             var lastId = this.Quibbles.Max(q => q.Id);
             quibble.Id = lastId + 1;
             this.Quibbles.Add(quibble);
             Save();
+            return quibble;
         }
 
         public void Update(Quibble quibble)

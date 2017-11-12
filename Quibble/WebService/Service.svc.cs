@@ -50,5 +50,11 @@ namespace WebService
             Int32.TryParse(Id, out parsedId);
             return _service.GetById(parsedId);
         }
+
+        [WebInvoke(UriTemplate = "/Quibbles")]
+        public Quibble Create(Quibble quibble)
+        {
+            return _service.Add(quibble);
+        }
     }
 }
