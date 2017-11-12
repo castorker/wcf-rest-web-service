@@ -145,6 +145,7 @@
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
           </CustomServerUrl>
+          <EnableWcfTestClientForSVCDefaultValue>False</EnableWcfTestClientForSVCDefaultValue>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
