@@ -29,11 +29,17 @@ namespace WebService
 
         // Add more operations here and mark them with [OperationContract]
 
+        private QuibbleDataService _service;
+
+        public Service()
+        {
+            _service = new QuibbleDataService();
+        }
+
         [WebGet(UriTemplate = "/Quibbles")]
         public Quibble[] GetAll()
         {
-            var service = new QuibbleDataService();
-            return service.GetAll();
+            return _service.GetAll();
         }
 
         //[WebGet(UriTemplate = "/Quibble?id={id}")]
@@ -42,8 +48,7 @@ namespace WebService
         {
             int parsedId;
             Int32.TryParse(Id, out parsedId);
-            var service = new QuibbleDataService();
-            return service.GetById(parsedId);
+            return _service.GetById(parsedId);
         }
     }
 }
