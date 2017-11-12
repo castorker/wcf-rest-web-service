@@ -64,5 +64,13 @@ namespace WebService
         {
             return _service.Update(quibble);
         }
+
+        [WebInvoke(Method = "DELETE", UriTemplate = "/Quibble/{Id}")]
+        public void Delete(string Id)
+        {
+            int parsedId;
+            Int32.TryParse(Id, out parsedId);
+            _service.Delete(parsedId);
+        }
     }
 }
