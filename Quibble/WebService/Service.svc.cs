@@ -29,12 +29,21 @@ namespace WebService
 
         // Add more operations here and mark them with [OperationContract]
 
-        
         [WebGet(UriTemplate = "/Quibbles")]
         public Quibble[] GetAll()
         {
             var service = new QuibbleDataService();
             return service.GetAll();
+        }
+
+        //[WebGet(UriTemplate = "/Quibble?id={id}")]
+        [WebGet(UriTemplate = "/Quibble/{id}")]
+        public Quibble GetById(string Id)
+        {
+            int parsedId;
+            Int32.TryParse(Id, out parsedId);
+            var service = new QuibbleDataService();
+            return service.GetById(parsedId);
         }
     }
 }
