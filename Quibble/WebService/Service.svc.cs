@@ -38,39 +38,45 @@ namespace WebService
 
         [WebGet(UriTemplate = "/Quibbles")]
         // [WebGet(UriTemplate = "/Quibbles", ResponseFormat = WebMessageFormat.Json)]
+        // http://localhost:53482/Service.svc/Quibbles
         public Quibble[] GetAll()
         {
             return _service.GetAll();
         }
 
-        [WebGet(UriTemplate = "/Quibble?id={id}")]
-        // [WebGet(UriTemplate = "/Quibble/{Id}", ResponseFormat = WebMessageFormat.Json)]
-        public Quibble GetById(string Id)
+        //[WebGet(UriTemplate = "/Quibble?id={id}")]
+        [WebGet(UriTemplate = "/Quibble/{id}")]
+        // http://localhost:53482/Service.svc/Quibble/2
+        public Quibble GetById(string id)
         {
             int parsedId;
-            Int32.TryParse(Id, out parsedId);
+            Int32.TryParse(id, out parsedId);
             return _service.GetById(parsedId);
         }
 
         [WebInvoke(UriTemplate = "/Quibbles")]
+        // http://localhost:53482/Service.svc/Quibbles
         public Quibble Create(Quibble quibble)
         {
             return _service.Add(quibble);
         }
 
-        [WebInvoke(Method = "PUT", UriTemplate = "/Quibble/{Id}")]
-        // [WebInvoke(Method = "PATCH", UriTemplate = "/Quibble/{Id}")]
-        public Quibble Update(string Id, Quibble quibble)
+        [WebInvoke(Method = "PUT", UriTemplate = "/Quibble/{id}")]
+        // [WebInvoke(Method = "PATCH", UriTemplate = "/Quibble/{id}")]
+        // http://localhost:53482/Service.svc/Quibble/2
+        public Quibble Update(string id, Quibble quibble)
         {
             return _service.Update(quibble);
         }
 
-        [WebInvoke(Method = "DELETE", UriTemplate = "/Quibble/{Id}")]
-        public void Delete(string Id)
+        [WebInvoke(Method = "DELETE", UriTemplate = "/Quibble/{id}")]
+        // http://localhost:53482/Service.svc/Quibble/2
+        public void Delete(string id)
         {
             int parsedId;
-            Int32.TryParse(Id, out parsedId);
+            Int32.TryParse(id, out parsedId);
             _service.Delete(parsedId);
+            //return $"Quibble {id} has been deleted.";
         }
     }
 }
